@@ -7,9 +7,9 @@ It is essentially a one-way local push mechanism. It is co-dependent on the andr
 Pre-requisites:
 * androidtv integration already setup and in home assistant
 * IRusb and companion app setup/installed on Nvidia Shield (should work on other ATV devices, but not tested)
-* Custom Cards:
-* mini-media-player
-* button-card
+* Custom Cards (if using remote card as well):
+  * mini-media-player
+  * button-card
 
 
 Configuration:
