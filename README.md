@@ -28,3 +28,6 @@ After reboot under Developer Tools you should now be able to issue the shell com
 shell_command.home_shield_livingroom
 ```
 Test and confirm working with your shield.
+ ⠀
+ 
+The irusb-remote-card.yaml within is an example of how this can be used with a remote card in Home Assistant
