@@ -10,7 +10,8 @@ Pre-requisites:
 * Custom Cards:
 * mini-media-player
 * button-card
- ⠀
+
+
 Configuration:
  ⠀
 > *In /config/configuration.yaml*
