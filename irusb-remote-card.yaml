@@ -1,0 +1,663 @@
+type: vertical-stack
+cards:
+- type: entities
+  entities:
+    - cards:
+        - artwork_border: true
+          entity: media_player.living_room_shield
+          group: true
+          hide:
+            controls: true
+            icon: true
+            info: false
+            name: true
+            power: true
+            volume: true
+          info: scroll
+          style: |
+            ha-card {
+              background: none;
+              box-shadow: none;
+              margin: 10px;
+              font-family: "Helvetica Neue";
+              letter-spacing: 0;
+            }
+            .mmp-player__core {
+              flex-wrap:wrap
+            }
+            mmp-powerstrip {
+              justify-content:flex-start !important;
+              flex-basis: 100% !important;
+            }
+          type: "custom:mini-media-player"
+        - entity: media_player.living_room_shield
+          icon: "mdi:power"
+          show_icon: true
+          show_name: false
+          state:
+            - styles:
+                card:
+                  - box-shadow: |
+                      [[[if (states['input_boolean.dark_mode'].state == 'off')
+                          return "inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03)";
+                        return "inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3)";
+                      ]]]
+                icon:
+                  - color: var(--paper-item-icon-active-color)
+              value: "on"
+          styles:
+            card:
+              - width: 60px
+              - height: 60px
+              - border-radius: 10px
+              - margin: 10px 10px 5px 0
+            icon:
+              - color: var(--primary-text-color)
+          tap_action:
+            action: toggle
+            haptic: light
+          type: "custom:button-card"
+      type: "custom:hui-horizontal-stack-card"
+    - show_icon: false
+      show_name: false
+      style: |
+        ha-card {
+          box-shadow: none;
+        }
+      styles:
+        card:
+          - width: 10px
+          - height: 10px
+      type: "custom:button-card"
+    - cards:
+        - icon: "mdi:home"
+          show_icon: true
+          show_name: false
+          styles:
+            card:
+              - width: 60px
+              - height: 40px
+              - border-radius: 15px
+              - margin-right: 10px
+              - margin-left: 15px
+              - margin-bottom: 15px
+            icon:
+              - color: var(--primary-text-color)
+          tap_action:
+            action: call-service
+            service: shell_command.home_shield_livingroom
+          type: "custom:button-card"
+        - icon: "mdi:format-list-bulleted"
+          show_icon: true
+          show_name: false
+          styles:
+            card:
+              - width: 60px
+              - height: 40px
+              - border-radius: 15px
+              - margin-right: 10px
+            icon:
+              - color: var(--primary-text-color)
+          tap_action:
+            action: call-service
+            service: shell_command.menu_shield_livingroom
+          type: "custom:button-card"
+        - icon: "mdi:keyboard-backspace"
+          show_icon: true
+          show_name: false
+          styles:
+            card:
+              - width: 60px
+              - height: 40px
+              - border-radius: 15px
+            icon:
+              - color: var(--primary-text-color)
+          tap_action:
+            action: call-service
+            service: shell_command.back_shield_livingroom
+          type: "custom:button-card"
+      type: "custom:hui-horizontal-stack-card"
+    - custom_fields:
+        area:
+          card:
+            entities:
+              - cards:
+                  - show_icon: false
+                    show_name: false
+                    styles:
+                      card:
+                        - width: 63px
+                        - height: 10px
+                        - box-shadow: none
+                        - background: none
+                    type: "custom:button-card"
+                  - icon: "mdi:menu-up"
+                    show_icon: true
+                    show_name: false
+                    size: 100%
+                    styles:
+                      card:
+                        - box-shadow: none
+                        - background: none
+                        - width: 50px
+                        - height: 50px
+                      icon:
+                        - color: var(--primary-text-color)
+                    tap_action:
+                      action: call-service
+                      haptic: light
+                      service: shell_command.up_shield_livingroom
+                    type: "custom:button-card"
+                type: "custom:hui-horizontal-stack-card"
+              - cards:
+                  - show_icon: false
+                    show_name: false
+                    styles:
+                      card:
+                        - width: 5px
+                        - height: 10px
+                        - box-shadow: none
+                        - background: none
+                    type: "custom:button-card"
+                  - icon: "mdi:menu-left"
+                    show_icon: true
+                    show_name: false
+                    size: 100%
+                    styles:
+                      card:
+                        - box-shadow: none
+                        - background: none
+                        - width: 50px
+                        - height: 50px
+                      icon:
+                        - color: var(--primary-text-color)
+                    tap_action:
+                      action: call-service
+                      haptic: light
+                      service: shell_command.left_shield_livingroom
+                    type: "custom:button-card"
+                  - name: OK
+                    show_icon: false
+                    show_name: true
+                    styles:
+                      card:
+                        - width: 50px
+                        - height: 50px
+                        - border-radius: 100px
+                        - background: none
+                      name:
+                        - font-size: 20px
+                        - font-weight: bold
+                        - font-family: Helvetica Neue
+                        - letter-spacing: "-0.01em"
+                    tap_action:
+                      action: call-service
+                      haptic: light
+                      service: shell_command.select_shield_livingroom
+                    hold_action:
+                      action: call-service
+                      service: shell_command.long_select_shield_livingroom
+                    type: "custom:button-card"
+                  - icon: "mdi:menu-right"
+                    show_icon: true
+                    show_name: false
+                    size: 100%
+                    styles:
+                      card:
+                        - box-shadow: none
+                        - background: none
+                        - width: 50px
+                        - height: 50px
+                      icon:
+                        - color: var(--primary-text-color)
+                    tap_action:
+                      action: call-service
+                      haptic: light
+                      service: shell_command.right_shield_livingroom
+                    type: "custom:button-card"
+                type: "custom:hui-horizontal-stack-card"
+              - cards:
+                  - show_icon: false
+                    show_name: false
+                    styles:
+                      card:
+                        - width: 63px
+                        - height: 10px
+                        - box-shadow: none
+                        - background: none
+                    type: "custom:button-card"
+                  - icon: "mdi:menu-down"
+                    show_icon: true
+                    show_name: false
+                    size: 100%
+                    styles:
+                      card:
+                        - box-shadow: none
+                        - background: none
+                        - width: 50px
+                        - height: 50px
+                      icon:
+                        - color: var(--primary-text-color)
+                    tap_action:
+                      action: call-service
+                      haptic: light
+                      service: shell_command.down_shield_livingroom
+                    type: "custom:button-card"
+                type: "custom:hui-horizontal-stack-card"
+            show_header_toggle: false
+            style: |
+              ha-card {
+                box-shadow: none;
+                background:none;
+              }
+            type: "custom:hui-entities-card"
+      show_icon: false
+      show_name: false
+      styles:
+        card:
+          - overflow: unset
+          - box-shadow: none
+          - background: none
+          - width: 218px
+          - margin-left: 15px
+          - padding: 0px
+        custom_fields:
+          area:
+            - box-shadow: |
+                [[[if (states['input_boolean.dark_mode'].state == 'off')
+                    return "inset -4px -4px 8px 0 rgba(255,255,255,.5), inset 4px 4px 8px 0 rgba(0,0,0,.03)";
+                  return "inset -4px -4px 10px 0 rgba(50, 50, 50,.5), inset 4px 4px 12px 0 rgba(0,0,0,.3)";
+                ]]]
+            - border-radius: 30px
+            - overflow: unset
+        grid:
+          - grid-template-areas: '"area"'
+          - grid-template-columns: 1fr
+          - grid-template-rows: 1fr min-content min-content
+      type: "custom:button-card"
+    - show_icon: false
+      show_name: false
+      style: |
+        ha-card {
+          box-shadow: none;
+        }
+      styles:
+        card:
+          - width: 10px
+          - height: 5px
+      type: "custom:button-card"
+    - cards:
+        - icon: "mdi:skip-previous"
+          show_icon: true
+          show_name: false
+          styles:
+            card:
+              - width: 60px
+              - height: 40px
+              - border-radius: 15px
+              - margin-right: 10px
+              - margin-bottom: 10px
+              - margin-left: 15px
+            name:
+              - font-weight: bold
+              - font-family: Helvetica Neue
+          tap_action:
+            action: call-service
+            haptic: light
+            service: shell_command.skipdown_shield_livingroom
+          type: "custom:button-card"
+        - hold_action:
+            action: call-service
+            confirmation:
+              text: Are you sure you want to stop playback?
+            service: shell_command.stop_shield_livingroom
+          icon: "mdi:play-pause"
+          show_icon: true
+          show_name: false
+          styles:
+            card:
+              - width: 60px
+              - height: 40px
+              - border-radius: 15px
+              - margin-right: 10px
+              - margin-bottom: 10px
+            name:
+              - font-weight: bold
+              - font-family: Helvetica Neue
+          tap_action:
+            action: call-service
+            service: shell_command.play_shield_livingroom
+          type: "custom:button-card"
+        - icon: "mdi:skip-next"
+          show_icon: true
+          show_name: false
+          styles:
+            card:
+              - width: 60px
+              - height: 40px
+              - border-radius: 15px
+              - margin-right: 10px
+              - margin-bottom: 10px
+            name:
+              - font-weight: bold
+              - font-family: Helvetica Neue
+          tap_action:
+            action: call-service
+            service: shell_command.skipup_shield_livingroom
+          type: "custom:button-card"
+      type: "custom:hui-horizontal-stack-card"
+    - cards:
+        - entities:
+            - cards:
+                - show_icon: false
+                  show_name: false
+                  styles:
+                    card:
+                      - width: 17px
+                      - height: 10px
+                      - box-shadow: none
+                  type: "custom:button-card"
+                - icon: "mdi:minus"
+                  show_icon: true
+                  show_name: false
+                  size: 100%
+                  styles:
+                    card:
+                      - box-shadow: none
+                      - width: 30px
+                      - height: 30px
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    haptic: light
+                    service: shell_command.volumedown_shield_livingroom
+                  type: "custom:button-card"
+                - show_icon: false
+                  show_name: false
+                  styles:
+                    card:
+                      - width: 10px
+                      - height: 10px
+                      - box-shadow: none
+                  type: "custom:button-card"
+                - entity: media_player.living_room_shield
+                  icon: >-
+                    [[[ if (entity.attributes.is_volume_muted == true) return
+                    "mdi:volume-mute"; else return "mdi:volume-low"   ]]]
+                  show_icon: true
+                  show_name: false
+                  size: 80%
+                  styles:
+                    card:
+                      - box-shadow: none
+                      - width: 30px
+                      - height: 30px
+                      - border-radius: 100px
+                    icon:
+                      - color: >-
+                          [[[ if (entity.attributes.is_volume_muted == true)
+                          return "var(--paper-item-icon-active-color)"; else
+                          return "var(--primary-text-color)"   ]]]
+                    name:
+                      - font-size: 13px
+                      - font-weight: bold
+                      - font-family: Helvetica Neue
+                      - letter-spacing: "-0.01em"
+                  tap_action:
+                    action: call-service
+                    haptic: light
+                    service: shell_command.mute_shield_livingroom
+                  type: "custom:button-card"
+                - show_icon: false
+                  show_name: false
+                  styles:
+                    card:
+                      - width: 10px
+                      - height: 10px
+                      - box-shadow: none
+                  type: "custom:button-card"
+                - icon: "mdi:plus"
+                  show_icon: true
+                  show_name: false
+                  size: 100%
+                  styles:
+                    card:
+                      - box-shadow: none
+                      - width: 30px
+                      - height: 30px
+                    icon:
+                      - color: var(--primary-text-color)
+                  tap_action:
+                    action: call-service
+                    haptic: light
+                    service: shell_command.volumeup_shield_livingroom
+                  type: "custom:button-card"
+              type: "custom:hui-horizontal-stack-card"
+          show_header_toggle: false
+          style: |
+            ha-card {
+              border-radius: 30px;
+              width:218px;
+              margin-left:15px;
+                        }
+          type: "custom:hui-entities-card"
+      type: "custom:hui-horizontal-stack-card"
+    - cards:
+        - name: "1"
+          show_icon: false
+          show_name: true
+          styles:
+            card:
+              - width: 60px
+              - height: 60px
+              - border-radius: 15px
+              - margin-right: 10px
+              - margin-bottom: 10px
+              - margin-left: 15px
+            name:
+              - font-weight: bold
+              - font-family: Helvetica Neue
+          tap_action:
+            action: call-service
+            service: shell_command.1_shield_livingroom
+          type: "custom:button-card"
+        - name: "2"
+          show_icon: false
+          show_name: true
+          styles:
+            card:
+              - width: 60px
+              - height: 60px
+              - border-radius: 15px
+              - margin-right: 10px
+              - margin-bottom: 10px
+            name:
+              - font-weight: bold
+              - font-family: Helvetica Neue
+          tap_action:
+            action: call-service
+            service: shell_command.2_shield_livingroom
+          type: "custom:button-card"
+        - name: "3"
+          show_icon: false
+          show_name: true
+          styles:
+            card:
+              - width: 60px
+              - height: 60px
+              - border-radius: 15px
+              - margin-right: 10px
+              - margin-bottom: 10px
+            name:
+              - font-weight: bold
+              - font-family: Helvetica Neue
+          tap_action:
+            action: call-service
+            service: shell_command.3_shield_livingroom
+          type: "custom:button-card"
+      type: "custom:hui-horizontal-stack-card"
+    - cards:
+        - name: "4"
+          show_icon: false
+          show_name: true
+          styles:
+            card:
+              - width: 60px
+              - height: 60px
+              - border-radius: 15px
+              - margin-right: 10px
+              - margin-bottom: 10px
+              - margin-left: 15px
+            name:
+              - font-weight: bold
+              - font-family: Helvetica Neue
+          tap_action:
+            action: call-service
+            service: shell_command.4_shield_livingroom
+          type: "custom:button-card"
+        - name: "5"
+          show_icon: false
+          show_name: true
+          styles:
+            card:
+              - width: 60px
+              - height: 60px
+              - border-radius: 15px
+              - margin-right: 10px
+              - margin-bottom: 10px
+            name:
+              - font-weight: bold
+              - font-family: Helvetica Neue
+          tap_action:
+            action: call-service
+            service: shell_command.5_shield_livingroom
+          type: "custom:button-card"
+        - name: "6"
+          show_icon: false
+          show_name: true
+          styles:
+            card:
+              - width: 60px
+              - height: 60px
+              - border-radius: 15px
+              - margin-right: 10px
+              - margin-bottom: 10px
+            name:
+              - font-weight: bold
+              - font-family: Helvetica Neue
+          tap_action:
+            action: call-service
+            service: shell_command.6_shield_livingroom
+          type: "custom:button-card"
+      type: "custom:hui-horizontal-stack-card"
+    - cards:
+        - name: "7"
+          show_icon: false
+          show_name: true
+          styles:
+            card:
+              - width: 60px
+              - height: 60px
+              - border-radius: 15px
+              - margin-right: 10px
+              - margin-bottom: 10px
+              - margin-left: 15px
+            name:
+              - font-weight: bold
+              - font-family: Helvetica Neue
+          tap_action:
+            action: call-service
+            service: shell_command.7_shield_livingroom
+          type: "custom:button-card"
+        - name: "8"
+          show_icon: false
+          show_name: true
+          styles:
+            card:
+              - width: 60px
+              - height: 60px
+              - border-radius: 15px
+              - margin-right: 10px
+              - margin-bottom: 10px
+            name:
+              - font-weight: bold
+              - font-family: Helvetica Neue
+          tap_action:
+            action: call-service
+            service: shell_command.8_shield_livingroom
+          type: "custom:button-card"
+        - name: "9"
+          show_icon: false
+          show_name: true
+          styles:
+            card:
+              - width: 60px
+              - height: 60px
+              - border-radius: 15px
+              - margin-right: 10px
+              - margin-bottom: 10px
+            name:
+              - font-weight: bold
+              - font-family: Helvetica Neue
+          tap_action:
+            action: call-service
+            service: shell_command.9_shield_livingroom
+          type: "custom:button-card"
+      type: "custom:hui-horizontal-stack-card"
+    - cards:
+        - icon: "mdi:television-box"
+          show_icon: true
+          show_name: false
+          styles:
+            card:
+              - width: 60px
+              - height: 60px
+              - border-radius: 15px
+              - margin-right: 10px
+              - margin-bottom: 10px
+              - margin-left: 15px
+            name:
+              - font-weight: bold
+              - font-family: Helvetica Neue
+          tap_action:
+            action: call-service
+            service: shell_command.app_tivimate_shield_livingroom
+          type: "custom:button-card"
+        - name: "0"
+          show_icon: false
+          show_name: true
+          styles:
+            card:
+              - width: 60px
+              - height: 60px
+              - border-radius: 15px
+              - margin-right: 10px
+              - margin-bottom: 10px
+            name:
+              - font-weight: bold
+              - font-family: Helvetica Neue
+          tap_action:
+            action: call-service
+            service: shell_command.0_shield_livingroom
+          type: "custom:button-card"
+        - icon: "mdi:plex"
+          show_icon: true
+          show_name: false
+          styles:
+            card:
+              - width: 60px
+              - height: 60px
+              - border-radius: 15px
+              - margin-right: 10px
+              - margin-bottom: 10px
+            name:
+              - font-weight: bold
+              - font-family: Helvetica Neue
+          tap_action:
+            action: call-service
+            service: shell_command.app_plex_shield_livingroom
+          type: "custom:button-card"
+      type: "custom:hui-horizontal-stack-card"
+  show_header_toggle: false
+
